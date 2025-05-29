@@ -13,19 +13,19 @@ class Jarat(ABC):
         pass
 
 
-# Belföldi járatot reprezentáló osztály
+# Belföldi járatokat reprezentáló osztály
 class BelfoldiJarat(Jarat):
     def info(self):
         return f"Belföldi: {self.jaratszam} - {self.celallomas} ({self.jegyar} Ft)"
 
 
-#  Nemzetközi járatot reprezentáló osztály
+#  Nemzetközi járatokat reprezentáló osztály
 class NemzetkoziJarat(Jarat):
     def info(self):
         return f"Nemzetközi: {self.jaratszam} - {self.celallomas} ({self.jegyar} Ft)"
 
 
-# Légitársaság, amely járatokat kezel
+# Járatok kezelése
 class LegiTarsasag:
     def __init__(self, nev):
         self.nev = nev
@@ -75,7 +75,7 @@ class JegyFoglalas:
             print(f"{nev} - {jarat.info()}")
 
 
-# Előre betöltött adatok a rendszer indulásakor
+# Előre betöltött adatok a rendszerben
 def elore_betoltott_adatok():
     airline = LegiTarsasag("SkyFly")
 
@@ -88,7 +88,7 @@ def elore_betoltott_adatok():
     airline.jarat_hozzaadasa(j2)
     airline.jarat_hozzaadasa(j3)
 
-    # 6 előre betöltött foglalás (mute=True: ne írjon ki üzenetet)
+    # 6 előre betöltött foglalás a feladat leírás alapján (mute=True: ne írjon ki üzenetet)
     foglalas = JegyFoglalas()
     foglalas.foglalas("Szikszai Konrád", j1, mute=True)
     foglalas.foglalas("Tam Tomi", j2, mute=True)
@@ -100,7 +100,7 @@ def elore_betoltott_adatok():
     return airline, foglalas
 
 
-# Egyszerű szöveges felhasználói interfész
+# felhasználói interfész
 def menu():
     airline, foglalasok = elore_betoltott_adatok()
     while True:
@@ -146,6 +146,6 @@ def menu():
             print("Érvénytelen választás, próbáld újra.")
 
 
-# A program belépési pontja
+# A program indítási pontja
 if __name__ == "__main__":
     menu()
